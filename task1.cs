@@ -1,18 +1,22 @@
-// Your program should start at this line.
-/*
-Example:
-Move();
-Move();
-Move();
-Turn();
-Move();
-Move();
-Turn();
-Turn();
-Turn();
-Move();
-*/
+#region Task 1
 
+bool nextCellOpen = Peek();
+while (nextCellOpen)
+{
+    Move();
+    nextCellOpen = Peek();
+    if (AtGoal())
+    {
+        break;
+    }
+    else
+    {
+        Turn();
+        nextCellOpen = Peek();
+    }
+}
+
+#endregion
 
 #region Basic functions
 // These functions are just her to make your intelisense work. 
