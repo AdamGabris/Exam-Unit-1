@@ -4,8 +4,8 @@
 bool nextCellOpen;
 bool currentCellVisited;
 bool previousCellVisited;
-int width = 42;
-int height = 32;
+int width = 16;
+int height = 15;
 int currentCellX = 0;
 int currentCellY = 0;
 
