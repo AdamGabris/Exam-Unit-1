@@ -1,4 +1,4 @@
-#region Task 1
+#region Task 2
 
 bool nextCellOpen;
 bool previousCellVisited;
