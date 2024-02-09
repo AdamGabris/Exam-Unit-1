@@ -1,28 +1,35 @@
-#region Task 3
+#region Task 1
 
-bool nextCellOpen;
-bool previousCellVisited;
+// Keeping track of the direction, 0 is  up, 1 is right, 2 is down and 3 is left
+int direction = 0;
+
 while (!AtGoal())
 {
-    nextCellOpen = Peek();
-    previousCellVisited = PeekBack();
-    if (nextCellOpen && !previousCellVisited)
+    if (PeekRight())
+    {
+
+        Turn();
+        direction = (direction + 1) % 4;
+
+        if (Peek())
+        {
+            Move();
+        }
+    }
+    else if (Peek())
     {
         Move();
     }
     else
     {
         Turn();
-    }
-
-    if (AtGoal())
-    {
-        Console.WriteLine("Goal reached!");
-        break;
+        Turn();
+        Turn();
+        direction = (direction + 3) % 4;
     }
 }
 
-
+Console.WriteLine("Goal reached!");
 
 #endregion
 
@@ -52,10 +59,23 @@ bool AtGoal()
     return true; // just a placholder
 }
 
-bool PeekBack()
+bool PeekRight()
 {
-    // Returns true if the previous cell has been visited, otherwise false.
-    return true; //
+    int originalDirection = direction;
+
+    Turn();
+    direction = (direction + 1) % 4;
+
+    bool result = Peek();
+
+    direction = originalDirection;
+
+    Turn();
+    Turn();
+    Turn();
+    direction = (direction + 3) % 4;
+
+    return result;
 }
 
 #endregion
